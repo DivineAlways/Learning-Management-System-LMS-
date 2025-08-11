@@ -1,0 +1,3793 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Main Entry</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #3498db; /* Trust, intelligence */
+            --secondary-green: #2ecc71; /* Growth, learning */
+            --neutral-grey-light: #ecf0f1; /* Professionalism, neutrality */
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22; /* Call to action */
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50; /* Darker blue/grey for header/footer */
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1; /* Allows main content to grow and fill available space */
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px; /* Constrain form input width */
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap; /* Prevent button text from wrapping */
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9; /* Darker blue */
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400; /* Darker orange */
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60; /* Darker green */
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px; /* Flex-grow, flex-shrink, basis */
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto; /* Pushes footer to the bottom */
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem; /* Stack buttons vertically */
+            }
+
+            .flex-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Project Learning Management System (LMS)</h1>
+            <p>Prototype Wireframe for County School Districts</p>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Login / Start Screen Section -->
+        <section>
+            <h2>Welcome to the LMS Prototype</h2>
+            <p>Please select your role to proceed or login below.</p>
+
+            <!-- Login Form -->
+            <div id="login-form">
+                <h3>Login</h3>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <p style="margin-top: 1rem; text-align: center;">(For wireframe purposes, select a role below)</p>
+            </div>
+
+            <!-- Role Selection / Navigation -->
+            <div class="flex-group">
+                <div class="flex-item">
+                    <h3>Administrator Access</h3>
+                    <p>View aggregate data, manage schools, teachers, and student accounts.</p>
+                    <a href="admin-dashboard.html" class="btn btn-primary">Go to Admin Dashboard</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Teacher Access</h3>
+                    <p>View student progress, create/assign courses and assessments, track performance.</p>
+                    <a href="teacher-dashboard.html" class="btn btn-secondary">Go to Teacher Dashboard</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Student Access</h3>
+                    <p>View assigned courses, upcoming deadlines, track own progress and scores.</p>
+                    <a href="student-dashboard.html" class="btn btn-accent">Go to Student Dashboard</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="user-profile.html" class="btn btn-outline">User Profile & Settings (Direct Link)</a>
+                <a href="help.html" class="btn btn-outline">Help & Support (Direct Link)</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p>
+                <a href="#documentation-notes">Documentation Notes</a>
+            </p>
+            <!-- Hidden documentation notes - as per instruction #10, discreetly linked -->
+            <div id="documentation-notes" style="display: none;">
+                <h3>Prototype Documentation Notes:</h3>
+                <ul>
+                    <li>This prototype is built using plain HTML, CSS, and minimal JS for demonstration purposes.</li>
+                    <li>No external frameworks or libraries are used to ensure simplicity and adherence to requirements.</li>
+                    <li>Placeholder content is used throughout, indicated by text like "(Not Provided)" or descriptive labels.</li>
+                    <li>Mobile responsiveness is implemented via CSS media queries and flexible box layouts.</li>
+                    <li>Semantic HTML5 elements are used for better structure and accessibility.</li>
+                    <li>Navigation between pages is handled by simple anchor `<a>` tags.</li>
+                    <li>Future enhancements would include dynamic data fetching, full authentication, and more interactive UI components.</li>
+                    <li>For a production system, robust backend integration, database management, and security measures (e.g., FERPA compliance) would be paramount.</li>
+                    <li>Accessibility (WCAG 2.1 AA) would require further auditing and implementation beyond basic semantic HTML.</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Admin Dashboard</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dashboard-card {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .data-visualization {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-grey-dark);
+            font-style: italic;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="student-analytics.html">Student Analytics</a></li>
+                    <li><a href="assessments.html">Assessments</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Dashboard Overview Section -->
+        <section>
+            <h2>Overview & Key Metrics</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>District Performance</h3>
+                    <div class="data-visualization">[Bar Chart: Average Test Scores by Subject/District]</div>
+                    <p>Overall Average Score: (Not Provided)%</p>
+                    <p>Improvement YTD: (Not Provided)%</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>User Statistics</h3>
+                    <p>Total Schools: (Not Provided)</p>
+                    <p>Total Teachers: (Not Provided)</p>
+                    <p>Total Students: (Not Provided)</p>
+                    <div class="data-visualization">[Pie Chart: User Role Distribution]</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>System Activity</h3>
+                    <p>Active Courses: (Not Provided)</p>
+                    <p>Assessments Completed Today: (Not Provided)</p>
+                    <p>Peak Concurrent Users: (Not Provided)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Management Links Section -->
+        <section>
+            <h2>Management & Administration</h2>
+            <div class="flex-group">
+                <div class="flex-item">
+                    <h3>Manage Schools</h3>
+                    <p>Add, edit, or remove school district information.</p>
+                    <a href="#" class="btn btn-outline">Go to School Management</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Manage Teachers</h3>
+                    <p>Create and manage teacher accounts, assign roles.</p>
+                    <a href="#" class="btn btn-outline">Go to Teacher Management</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Manage Students</h3>
+                    <p>Oversee student accounts and enrollments across districts.</p>
+                    <a href="#" class="btn btn-outline">Go to Student Management</a>
+                </div>
+                <div class="flex-item">
+                    <h3>System Settings</h3>
+                    <p>Configure global LMS settings and integrations.</p>
+                    <a href="user-profile.html" class="btn btn-outline">Go to System Settings</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reporting Section -->
+        <section>
+            <h2>District-Wide Reports</h2>
+            <p>Generate detailed reports on student, class, and school-wide performance to track test score improvements.</p>
+            <div class="flex-group">
+                <div class="flex-item">
+                    <h3>Performance Trends</h3>
+                    <p>Analyze test score trends over time for districts and schools.</p>
+                    <a href="student-analytics.html" class="btn btn-primary">Generate Performance Report</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Usage Analytics</h3>
+                    <p>View system usage statistics and popular courses/features.</p>
+                    <a href="#" class="btn btn-primary">Generate Usage Report</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Teacher Dashboard</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dashboard-card {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .data-visualization {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-grey-dark);
+            font-style: italic;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Teacher Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="student-analytics.html">Student Analytics</a></li>
+                    <li><a href="assessments.html">Assessments</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Teacher Overview Section -->
+        <section>
+            <h2>Welcome, Teacher Name (Not Provided)!</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>My Classes</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Math - Grade 5 <a href="#" class="btn btn-primary btn-sm">View</a></li>
+                        <li class="list-group-item">Science - Grade 5 <a href="#" class="btn btn-primary btn-sm">View</a></li>
+                        <li class="list-group-item">History - Grade 5 <a href="#" class="btn btn-primary btn-sm">View</a></li>
+                    </ul>
+                    <a href="courses.html" class="btn btn-outline" style="margin-top: 1rem;">Manage Courses</a>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Upcoming Deadlines</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Math Quiz 1 (Due: DD/MM/YYYY)</li>
+                        <li class="list-group-item">Science Project (Due: DD/MM/YYYY)</li>
+                        <li class="list-group-item">History Essay (Due: DD/MM/YYYY)</li>
+                    </ul>
+                    <a href="assessments.html" class="btn btn-outline" style="margin-top: 1rem;">Create Assessments</a>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Recent Student Progress</h3>
+                    <div class="data-visualization">[Mini Chart: Class Average vs. District Average]</div>
+                    <p>Class Average Math Score: (Not Provided)%</p>
+                    <p>Students Needing Attention: (Not Provided)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions Section -->
+        <section>
+            <h2>Quick Actions</h2>
+            <div class="flex-group">
+                <div class="flex-item">
+                    <h3>View Student Progress</h3>
+                    <p>Detailed performance tracking and areas of need.</p>
+                    <a href="student-analytics.html" class="btn btn-primary">Go to Student Analytics</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Create New Assignment</h3>
+                    <p>Build and assign new quizzes, homework, or projects.</p>
+                    <a href="assessments.html" class="btn btn-secondary">Create Assignment</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Manage Course Content</h3>
+                    <p>Add, edit, or organize learning materials for your classes.</p>
+                    <a href="courses.html" class="btn btn-accent">Manage Content</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Grade Submissions</h3>
+                    <p>Review and grade student assignments and assessments.</p>
+                    <a href="#" class="btn btn-outline">Go to Gradebook (Not Implemented)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications Section -->
+        <section>
+            <h2>Notifications</h2>
+            <ul class="list-group">
+                <li class="list-group-item">New student enrollment in Math - Grade 5.</li>
+                <li class="list-group-item">Science Quiz 1 submissions awaiting grading.</li>
+                <li class="list-group-item">System update scheduled for (Not Provided) DD/MM/YYYY.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Student Dashboard</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dashboard-card {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .data-visualization {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-grey-dark);
+            font-style: italic;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Student Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="student-analytics.html">Student Analytics</a></li>
+                    <li><a href="assessments.html">Assessments</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Student Overview Section -->
+        <section>
+            <h2>Welcome, Student Name (Not Provided)!</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>My Courses</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Math - Grade 5 <a href="#" class="btn btn-primary btn-sm">Start</a></li>
+                        <li class="list-group-item">Science - Grade 5 <a href="#" class="btn btn-primary btn-sm">Continue</a></li>
+                        <li class="list-group-item">History - Grade 5 <a href="#" class="btn btn-primary btn-sm">View</a></li>
+                    </ul>
+                    <a href="courses.html" class="btn btn-outline" style="margin-top: 1rem;">Browse All Courses</a>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Upcoming Assignments</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">Math Quiz 1 (Due: DD/MM/YYYY) <a href="assessments.html" class="btn btn-secondary btn-sm">Take Quiz</a></li>
+                        <li class="list-group-item">Science Project (Due: DD/MM/YYYY) <a href="#" class="btn btn-secondary btn-sm">View Details</a></li>
+                        <li class="list-group-item">History Essay (Due: DD/MM/YYYY) <a href="#" class="btn btn-secondary btn-sm">Submit</a></li>
+                    </ul>
+                </div>
+                <div class="dashboard-card">
+                    <h3>My Progress & Scores</h3>
+                    <div class="data-visualization">[Line Graph: My Math Scores Over Time]</div>
+                    <p>Overall GPA: (Not Provided)</p>
+                    <p>Areas for Improvement: (Not Provided) (e.g., Algebra, Scientific Method)</p>
+                    <a href="student-analytics.html" class="btn btn-primary" style="margin-top: 1rem;">View Detailed Progress</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Resources Section -->
+        <section>
+            <h2>Recommended for You</h2>
+            <p>Based on your performance, here are some resources to help you improve:</p>
+            <div class="flex-group">
+                <div class="flex-item">
+                    <h3>Algebra Practice Module</h3>
+                    <p>Interactive lessons and exercises on algebraic equations.</p>
+                    <a href="#" class="btn btn-accent">Start Module</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Scientific Method Video Series</h3>
+                    <p>Engaging videos explaining steps of the scientific method.</p>
+                    <a href="#" class="btn btn-accent">Watch Videos</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Grammar Review Guide</h3>
+                    <p>Comprehensive guide for enhancing writing skills.</p>
+                    <a href="#" class="btn btn-accent">Read Guide</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications Section -->
+        <section>
+            <h2>Notifications</h2>
+            <ul class="list-group">
+                <li class="list-group-item">New assignment: Science Lab Report.</li>
+                <li class="list-group-item">Your Math Quiz 1 score is now available.</li>
+                <li class="list-group-item">Reminder: History Essay due soon!</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Courses</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dashboard-card {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .data-visualization {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-grey-dark);
+            font-style: italic;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-card {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Courses & Curriculum</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                    <li><a href="student-analytics.html">Student Analytics</a></li>
+                    <li><a href="assessments.html">Assessments</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Course Management Section (for Teachers/Admins) -->
+        <section>
+            <h2>My Managed Courses (Teacher View)</h2>
+            <p>Here you can create new courses, manage existing ones, and assign them to students.</p>
+            <a href="#" class="btn btn-secondary" style="margin-bottom: 1.5rem;">+ Create New Course</a>
+
+            <div class="course-card">
+                <h3>Math - Grade 5</h3>
+                <p><strong>Status:</strong> Active</p>
+                <p><strong>Assigned Students:</strong> (Not Provided)</p>
+                <p>This course covers fundamental arithmetic, fractions, decimals, and introductory algebra.</p>
+                <a href="#" class="btn btn-primary btn-sm">Edit Course</a>
+                <a href="#" class="btn btn-outline btn-sm">View Content</a>
+                <a href="#" class="btn btn-accent btn-sm">Assign to Students</a>
+            </div>
+
+            <div class="course-card">
+                <h3>Science - Grade 5</h3>
+                <p><strong>Status:</strong> Active</p>
+                <p><strong>Assigned Students:</strong> (Not Provided)</p>
+                <p>Exploration of life sciences, physical sciences, and earth & space sciences.</p>
+                <a href="#" class="btn btn-primary btn-sm">Edit Course</a>
+                <a href="#" class="btn btn-outline btn-sm">View Content</a>
+                <a href="#" class="btn btn-accent btn-sm">Assign to Students</a>
+            </div>
+
+            <div class="course-card">
+                <h3>History - Grade 5</h3>
+                <p><strong>Status:</strong> Active</p>
+                <p><strong>Assigned Students:</strong> (Not Provided)</p>
+                <p>A journey through ancient civilizations, American history, and world events.</p>
+                <a href="#" class="btn btn-primary btn-sm">Edit Course</a>
+                <a href="#" class="btn btn-outline btn-sm">View Content</a>
+                <a href="#" class="btn btn-accent btn-sm">Assign to Students</a>
+            </div>
+
+            <p style="margin-top: 2rem;">(This section would be for teachers/admins. Students would see 'My Enrolled Courses' or 'Browse Courses'.)</p>
+        </section>
+
+        <!-- Course Catalog Section (for Students/General View) -->
+        <section>
+            <h2>Course Catalog (Student View)</h2>
+            <p>Explore available learning materials and courses to enhance your knowledge.</p>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Advanced Algebra</h3>
+                    <p><strong>Subject:</strong> Mathematics</p>
+                    <p><strong>Difficulty:</strong> Advanced</p>
+                    <p>For students ready to dive deeper into algebraic concepts.</p>
+                    <a href="#" class="btn btn-secondary">Enroll Now</a>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Introduction to Coding</h3>
+                    <p><strong>Subject:</strong> Technology</p>
+                    <p><strong>Difficulty:</strong> Beginner</p>
+                    <p>Learn the basics of programming with interactive exercises.</p>
+                    <a href="#" class="btn btn-secondary">Enroll Now</a>
+                </div>
+                <div class="dashboard-card">
+                    <h3>World Geography</h3>
+                    <p><strong>Subject:</strong> Social Studies</p>
+                    <p><strong>Difficulty:</strong> Intermediate</p>
+                    <p>Discover countries, cultures, and geographical features.</p>
+                    <a href="#" class="btn btn-secondary">Enroll Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Student Analytics</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dashboard-card {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .data-visualization {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            min-height: 200px; /* Larger min-height for charts */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-grey-dark);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        .report-filter-bar {
+            background-color: var(--neutral-grey-light);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-around;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .report-filter-bar select, .report-filter-bar input {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .report-filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Student Analytics & Reports</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="assessments.html">Assessments</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Student Selection/Filter Section -->
+        <section>
+            <h2>Select Student or Class for Analysis</h2>
+            <div class="report-filter-bar">
+                <label for="student-select">Student:</label>
+                <select id="student-select" name="student">
+                    <option value="">-- Select a Student --</option>
+                    <option value="student1">Student 1 (Not Provided)</option>
+                    <option value="student2">Student 2 (Not Provided)</option>
+                    <option value="student3">Student 3 (Not Provided)</option>
+                </select>
+
+                <label for="class-select">Class:</label>
+                <select id="class-select" name="class">
+                    <option value="">-- Select a Class --</option>
+                    <option value="math5">Math - Grade 5</option>
+                    <option value="science5">Science - Grade 5</option>
+                </select>
+
+                <label for="subject-select">Subject:</label>
+                <select id="subject-select" name="subject">
+                    <option value="">-- Select a Subject --</option>
+                    <option value="algebra">Algebra</option>
+                    <option value="geometry">Geometry</option>
+                    <option value="biology">Biology</option>
+                </select>
+
+                <button class="btn btn-primary">Apply Filters</button>
+            </div>
+            <p style="text-align: center;">(Data below dynamically updates based on selection)</p>
+        </section>
+
+        <!-- Student Performance Overview Section -->
+        <section>
+            <h2>Performance Overview: (Selected Student/Class Name)</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Overall Academic Progress</h3>
+                    <div class="data-visualization">[Line Graph: Overall Grade/Score Trend Over Time]</div>
+                    <p>Current Average Score: (Not Provided)%</p>
+                    <p>Change from Last Period: (Not Provided)%</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Subject Area Strengths & Weaknesses</h3>
+                    <div class="data-visualization">[Radar Chart: Performance by Subject (e.g., Math, Science, ELA)]</div>
+                    <p><strong>Strongest Area:</strong> (Not Provided)</p>
+                    <p><strong>Needs Improvement:</strong> (Not Provided)</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Test Score Improvement</h3>
+                    <div class="data-visualization">[Bar Chart: Comparison of Test Scores Over Time]</div>
+                    <p>Latest Test Score: (Not Provided)%</p>
+                    <p>Improvement Since Last Test: (Not Provided)%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Skill Breakdown Section -->
+        <section>
+            <h2>Detailed Skill Breakdown (Not Provided Subject)</h2>
+            <p>Identifies key points and specific areas of a child's needs within a subject.</p>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span><strong>Concept:</strong> Solving Linear Equations</span>
+                    <span><strong>Mastery:</strong> (Not Provided)%</span>
+                    <a href="#" class="btn btn-secondary btn-sm">Recommend Resources</a>
+                </li>
+                <li class="list-group-item">
+                    <span><strong>Concept:</strong> Understanding Fractions</span>
+                    <span><strong>Mastery:</strong> (Not Provided)%</span>
+                    <a href="#" class="btn btn-secondary btn-sm">Recommend Resources</a>
+                </li>
+                <li class="list-group-item">
+                    <span><strong>Concept:</strong> Scientific Method Application</span>
+                    <span><strong>Mastery:</strong> (Not Provided)%</span>
+                    <a href="#" class="btn btn-secondary btn-sm">Recommend Resources</a>
+                </li>
+                <li class="list-group-item">
+                    <span><strong>Concept:</strong> Essay Structure & Argumentation</span>
+                    <span><strong>Mastery:</strong> (Not Provided)%</span>
+                    <a href="#" class="btn btn-secondary btn-sm">Recommend Resources</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Activity Log / Intervention Suggestions -->
+        <section>
+            <h2>Recent Activity & Suggestions</h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span><strong>Activity:</strong> Completed "Algebra Basics Quiz"</span>
+                    <span><strong>Score:</strong> (Not Provided)%</span>
+                    <span><strong>Date:</strong> DD/MM/YYYY</span>
+                </li>
+                <li class="list-group-item">
+                    <span><strong>Suggestion:</strong> Recommend "Fractions Remedial Module" for Student 1.</span>
+                    <span><strong>Action:</strong> <a href="#" class="btn btn-primary btn-sm">Assign</a></span>
+                </li>
+                <li class="list-group-item">
+                    <span><strong>Activity:</strong> Viewed "History of Ancient Rome" video.</span>
+                    <span><strong>Date:</strong> DD/MM/YYYY</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Assessments & Quizzes</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea,
+        .form-group input[type="date"],
+        .form-group input[type="time"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .assessment-card {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .assessment-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .question-type-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .question-type-selector button {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-blue);
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .question-type-selector button.active,
+        .question-type-selector button:hover {
+            background-color: #2980b9;
+        }
+
+        .question-preview {
+            border: 1px dashed var(--border-color);
+            padding: 1rem;
+            margin-top: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .question-type-selector {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Assessments & Quizzes</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="student-analytics.html">Student Analytics</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Create Assessment Section (for Teachers/Admins) -->
+        <section>
+            <h2>Create New Assessment</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="assessment-title">Assessment Title:</label>
+                    <input type="text" id="assessment-title" name="assessment-title" placeholder="e.g., Math Chapter 3 Quiz" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-assign">Assign to Course:</label>
+                    <select id="course-assign" name="course-assign">
+                        <option value="">-- Select Course --</option>
+                        <option value="math5">Math - Grade 5</option>
+                        <option value="science5">Science - Grade 5</option>
+                        <option value="history5">History - Grade 5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="due-date">Due Date:</label>
+                    <input type="date" id="due-date" name="due-date">
+                </div>
+                <div class="form-group">
+                    <label for="due-time">Due Time:</label>
+                    <input type="time" id="due-time" name="due-time">
+                </div>
+                <div class="form-group">
+                    <label for="instructions">Instructions:</label>
+                    <textarea id="instructions" name="instructions" placeholder="Enter any specific instructions for students..."></textarea>
+                </div>
+
+                <h3>Add Questions</h3>
+                <div class="question-type-selector">
+                    <button type="button" class="btn btn-primary btn-sm active" onclick="showQuestionForm('multiple-choice')">Multiple Choice</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showQuestionForm('true-false')">True/False</button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="showQuestionForm('short-answer')">Short Answer</button>
+                </div>
+
+                <div id="multiple-choice-form" class="question-form">
+                    <h4>Multiple Choice Question</h4>
+                    <div class="form-group">
+                        <label for="mc-question">Question Text:</label>
+                        <input type="text" id="mc-question" placeholder="Enter your question here">
+                    </div>
+                    <div class="form-group">
+                        <label>Options:</label>
+                        <input type="text" placeholder="Option A">
+                        <input type="text" placeholder="Option B">
+                        <input type="text" placeholder="Option C">
+                        <input type="text" placeholder="Option D">
+                    </div>
+                    <div class="form-group">
+                        <label for="mc-correct">Correct Option:</label>
+                        <input type="text" id="mc-correct" placeholder="Enter correct option (e.g., B)">
+                    </div>
+                </div>
+
+                <div id="true-false-form" class="question-form" style="display: none;">
+                    <h4>True/False Question</h4>
+                    <div class="form-group">
+                        <label for="tf-question">Question Text:</label>
+                        <input type="text" id="tf-question" placeholder="Enter your True/False statement">
+                    </div>
+                    <div class="form-group">
+                        <label for="tf-correct">Correct Answer:</label>
+                        <select id="tf-correct">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="short-answer-form" class="question-form" style="display: none;">
+                    <h4>Short Answer Question</h4>
+                    <div class="form-group">
+                        <label for="sa-question">Question Text:</label>
+                        <textarea id="sa-question" placeholder="Enter your short answer question"></textarea>
+                    </div>
+                    <p style="font-size: 0.9em; color: var(--neutral-grey-dark);">(Short answer questions typically require manual grading.)</p>
+                </div>
+
+                <button type="button" class="btn btn-primary" style="margin-top: 1rem;">Add Question</button>
+                <div class="question-preview">
+                    [Preview: Question 1 - (Not Provided)]<br>
+                    [Preview: Question 2 - (Not Provided)]<br>
+                    ...
+                </div>
+
+                <button type="submit" class="btn btn-secondary" style="margin-top: 1.5rem;">Save Assessment</button>
+                <button type="button" class="btn btn-outline" style="margin-top: 1.5rem;">Cancel</button>
+            </form>
+        </section>
+
+        <!-- Manage Assessments Section -->
+        <section>
+            <h2>My Assessments (Teacher View)</h2>
+            <div class="assessment-card">
+                <h3>Math Chapter 3 Quiz</h3>
+                <p><strong>Course:</strong> Math - Grade 5</p>
+                <p><strong>Due Date:</strong> DD/MM/YYYY</p>
+                <p><strong>Status:</strong> Active</p>
+                <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                <a href="#" class="btn btn-outline btn-sm">View Submissions</a>
+                <a href="#" class="btn btn-accent btn-sm">Grade</a>
+            </div>
+            <div class="assessment-card">
+                <h3>Science Lab Report - Photosynthesis</h3>
+                <p><strong>Course:</strong> Science - Grade 5</p>
+                <p><strong>Due Date:</strong> DD/MM/YYYY</p>
+                <p><strong>Status:</strong> Draft</p>
+                <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                <a href="#" class="btn btn-secondary btn-sm">Publish</a>
+            </div>
+        </section>
+
+        <!-- Student Assessment View -->
+        <section>
+            <h2>My Assigned Assessments (Student View)</h2>
+            <div class="assessment-card">
+                <h3>Math Chapter 3 Quiz</h3>
+                <p><strong>Course:</strong> Math - Grade 5</p>
+                <p><strong>Due Date:</strong> DD/MM/YYYY at HH:MM PM</p>
+                <p><strong>Status:</strong> Pending</p>
+                <a href="#" class="btn btn-accent">Start Quiz</a>
+            </div>
+            <div class="assessment-card">
+                <h3>History Mid-Term Exam</h3>
+                <p><strong>Course:</strong> History - Grade 5</p>
+                <p><strong>Due Date:</strong> DD/MM/YYYY at HH:MM PM</p>
+                <p><strong>Status:</strong> Completed</p>
+                <a href="#" class="btn btn-primary">View Score</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for question type toggling -->
+    <script>
+        function showQuestionForm(type) {
+            const forms = document.querySelectorAll('.question-form');
+            forms.forEach(form => form.style.display = 'none');
+
+            const buttons = document.querySelectorAll('.question-type-selector button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(type + '-form').style.display = 'block';
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - User Profile</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 400px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>User Profile & Settings</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="student-analytics.html">Student Analytics</a></li>
+                    <li><a href="assessments.html">Assessments</a></li>
+                    <li><a href="help.html">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- Profile Information Section -->
+        <section>
+            <h2>My Profile</h2>
+            <div class="profile-info">
+                <p><strong>Name:</strong> (Not Provided) (Not Provided)</p>
+                <p><strong>Role:</strong> (Not Provided) (e.g., Teacher, Student, Admin)</p>
+                <p><strong>Email:</strong> (Not Provided)@example.com</p>
+                <p><strong>School/District:</strong> (Not Provided) County School District</p>
+                <p><strong>Member Since:</strong> DD/MM/YYYY</p>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 1.5rem;">Edit Profile</button>
+        </section>
+
+        <!-- Account Settings Section -->
+        <section>
+            <h2>Account Settings</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="new-password">Change Password:</label>
+                    <input type="password" id="new-password" name="new-password" placeholder="Enter new password">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm New Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password">
+                </div>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+            </form>
+
+            <h3 style="margin-top: 2rem;">Notification Preferences</h3>
+            <div class="form-group">
+                <input type="checkbox" id="email-notif" name="email-notif" checked>
+                <label for="email-notif">Receive email notifications</label>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="app-notif" name="app-notif">
+                <label for="app-notif">Receive in-app notifications</label>
+            </div>
+            <button class="btn btn-secondary">Save Preferences</button>
+        </section>
+
+        <!-- Privacy & Security Settings (Admin/Teacher specific options could be here too) -->
+        <section>
+            <h2>Privacy & Security</h2>
+            <p>Your data privacy is important to us. We adhere to FERPA and other educational data standards.</p>
+            <p><strong>Data Sharing:</strong> (Not Provided) (e.g., Limited, Opt-in, etc.)</p>
+            <p><strong>Two-Factor Authentication:</strong> (Not Provided)</p>
+            <a href="#" class="btn btn-outline">Manage Data Privacy Settings</a>
+            <a href="#" class="btn btn-outline" style="margin-left: 1rem;">Enable/Disable 2FA</a>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+```
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Wireframe - Help & Support</title>
+    <style>
+        /* Global Styles (copied for standalone pages) */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-green: #2ecc71;
+            --neutral-grey-light: #ecf0f1;
+            --neutral-grey-dark: #7f8c8d;
+            --dark-text: #333;
+            --light-text: #fff;
+            --accent-orange: #e67e22;
+            --border-color: #ddd;
+            --card-bg: #fff;
+            --header-footer-bg: #2c3e50;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--neutral-grey-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            max-width: 600px; /* Wider for support forms */
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-accent {
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-accent:hover {
+            background-color: #d35400;
+            border-color: #d35400;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: var(--light-text);
+            border: 1px solid var(--secondary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+
+        /* Flex Utilities */
+        .flex-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .flex-item {
+            flex: 1 1 280px;
+            min-width: 250px;
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .flex-item h3 {
+            color: var(--dark-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item {
+            background-color: var(--neutral-grey-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item h3 {
+            margin: 0;
+            color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item .answer {
+            display: none;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 0.8rem;
+        }
+
+        .faq-item.open .answer {
+            display: block;
+        }
+
+        .faq-item .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .toggle-icon {
+            transform: rotate(90deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--header-footer-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .flex-item {
+                flex-basis: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Help & Support</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home (Login/Role Select)</a></li>
+                    <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                    <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
+                    <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="student-analytics.html">Student Analytics</a></li>
+                    <li><a href="assessments.html">Assessments</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        <!-- FAQ Section -->
+        <section>
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>How do I reset my password?<span class="toggle-icon">+</span></h3>
+                <div class="answer">
+                    <p>You can reset your password by navigating to the <a href="user-profile.html">User Profile & Settings</a> page and selecting the 'Change Password' option. Follow the prompts to set a new password.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>Where can I find my assignments?<span class="toggle-icon">+</span></h3>
+                <div class="answer">
+                    <p>All your assigned courses and upcoming assignments can be found on your <a href="student-dashboard.html">Student Dashboard</a> under the "Upcoming Assignments" section. You can also view them in the <a href="assessments.html">Assessments & Quizzes</a> section.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>How do I create a new course?<span class="toggle-icon">+</span></h3>
+                <div class="answer">
+                    <p>Teachers and Administrators can create new courses from the <a href="courses.html">Courses & Curriculum</a> page. Look for the "Create New Course" button.</p>
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <h3>Is my student data private?<span class="toggle-icon">+</span></h3>
+                <div class="answer">
+                    <p>Yes, your student data is protected. Our system is compliant with educational data privacy regulations, including FERPA. For more details, visit the <a href="user-profile.html">Privacy & Security</a> section in your User Profile.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Support Section -->
+        <section>
+            <h2>Contact Support</h2>
+            <p>If you can't find an answer in our FAQs, please reach out to our support team.</p>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="support-name">Your Name:</label>
+                    <input type="text" id="support-name" name="support-name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="support-email">Your Email:</label>
+                    <input type="email" id="support-email" name="support-email" placeholder="Enter your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="support-subject">Subject:</label>
+                    <input type="text" id="support-subject" name="support-subject" placeholder="Brief subject of your inquiry" required>
+                </div>
+                <div class="form-group">
+                    <label for="support-message">Your Message:</label>
+                    <textarea id="support-message" name="support-message" placeholder="Describe your issue or question in detail..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Additional Resources Section -->
+        <section>
+            <h2>Additional Resources</h2>
+            <div class="flex-group">
+                <div class="flex-item">
+                    <h3>User Manuals</h3>
+                    <p>Download comprehensive guides for each user role.</p>
+                    <a href="#" class="btn btn-outline">Download Manuals (PDF)</a>
+                </div>
+                <div class="flex-item">
+                    <h3>Video Tutorials</h3>
+                    <p>Watch step-by-step videos on how to use key features.</p>
+                    <a href="#" class="btn btn-outline">Watch Tutorials</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Learning Management System Prototype. All rights reserved.</p>
+            <p><a href="index.html#documentation-notes">Documentation Notes</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ toggle -->
+    <script>
+        function toggleFAQ(element) {
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
+```
